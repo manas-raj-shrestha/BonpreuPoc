@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_transactions"
+        android:text="Transactions"
+        android:paddingHorizontal="16dp"
+        android:background="@color/colorAccent"
+        android:textColor="#1D5532"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingVertical="8dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rv_transactions"
+        android:layout_height="340dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transactions"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_accounts"
+        android:text="Accounts"
+        android:paddingHorizontal="16dp"
+        android:background="@color/colorAccent"
+        android:textColor="#1D5532"
+        app:layout_constraintTop_toBottomOf="@id/rv_transactions"
+        android:paddingVertical="8dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_accounts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_connect_bank"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_accounts"
+        app:layout_constraintVertical_weight="7" />
+
+    <Button
+        android:id="@+id/btn_initiate_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_background"
+        android:paddingHorizontal="8dp"
+        android:layout_marginRight="16dp"
+        android:text="Make A Payment "
+        android:textColor="#1D5532"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btn_connect_bank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_background"
+        android:paddingHorizontal="8dp"
+        android:text="Connect to Bank"
+        android:textColor="#1D5532"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <WebView
+        android:background="@android:color/white"
+        android:visibility="gone"
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:paddingHorizontal="8dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
