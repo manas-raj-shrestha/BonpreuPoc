@@ -14,10 +14,22 @@ class DemoMainActivity: AppCompatActivity() {
         setContentView(R.layout.demo_activity_onboarding)
 
         initiateViewPager()
+        setContinueButtonAction()
+    }
+
+    private fun setContinueButtonAction() {
+        btn_continue.setOnClickListener {
+            if (vp_tutorial.currentItem == 2){
+
+            }else{
+                vp_tutorial.currentItem += 1
+            }
+        }
     }
 
     private fun initiateViewPager() {
         vp_tutorial.adapter = TutorialPagerAdapter(supportFragmentManager)
+        page_view_indicator.count = 3
     }
 }
 
@@ -29,5 +41,4 @@ class TutorialPagerAdapter(supportFragmentManager: FragmentManager) : FragmentSt
     override fun getCount(): Int {
         return 3
     }
-
 }
