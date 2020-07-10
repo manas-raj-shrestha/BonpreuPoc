@@ -1,4 +1,4 @@
-package com.dinube.bonpreu.afterbanks
+package com.dinube.bonpreu.demo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
