@@ -1,38 +1,27 @@
-package com.dinube.bonpreu.demo.signup
+package com.dinube.bonpreu.demo.login
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.dinube.bonpreu.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
-import kotlinx.android.synthetic.main.bottom_sheet_signup.*
+import com.dinube.bonpreu.demo.signup.SignUpActivity
+import kotlinx.android.synthetic.main.legal_terms_activity.*
 import kotlinx.android.synthetic.main.legal_terms_activity.toolbar
+import kotlinx.android.synthetic.main.login_activity.*
+import kotlinx.android.synthetic.main.login_activity.iv_fido_icon
+import kotlinx.android.synthetic.main.login_activity.iv_singular_key_icon
 import kotlinx.android.synthetic.main.sign_up_activity.*
 
-class SignUpActivity: AppCompatActivity() {
-
-   lateinit var standardBottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
-
+class LoginActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sign_up_activity)
+        setContentView(R.layout.login_activity)
 
         initializeToolbar()
+        setRegisterAction()
         initializeImageViews()
-        initializeClickListeners()
-
-        standardBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_sign_up)
-
-        standardBottomSheetBehavior.state = STATE_HIDDEN
-    }
-
-    private fun initializeClickListeners() {
-        btn_login.setOnClickListener {
-            standardBottomSheetBehavior.state = STATE_EXPANDED
-        }
     }
 
     private fun initializeImageViews() {
@@ -45,9 +34,13 @@ class SignUpActivity: AppCompatActivity() {
         stream?.close()
     }
 
+    private fun setRegisterAction() {
+        tv_register.setOnClickListener { startActivity(Intent(this, SignUpActivity::class.java)) }
+    }
+
     private fun initializeToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Registra't"
+        supportActionBar?.title = "Iniciar Sessió"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar.setNavigationOnClickListener { onBackPressed() }
