@@ -11,12 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".demo.onboarding.OnBoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".DashboardActivity"/>
@@ -28,9 +26,16 @@
         <activity android:name=".saltedge.SaltEdgePaymentSelectionActivity"/>
         <activity android:name=".saltedge.SaltEdgeCredentialsPaymentActivity"/>
         <activity android:name=".saltedge.SaltEdgeDirectPayActivity"/>
+
+        <activity android:name=".RegistrationActivity" />
+         
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".LoginActivity" />
+
         <activity android:name=".demo.signup.SignUpActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".demo.login.LoginActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".demo.signup.LegalTermsActivity" />
+
     </application>
 
 </manifest>
