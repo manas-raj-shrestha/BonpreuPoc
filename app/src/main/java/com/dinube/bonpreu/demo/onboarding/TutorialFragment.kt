@@ -1,4 +1,4 @@
-package com.dinube.bonpreu.demo
+package com.dinube.bonpreu.demo.onboarding
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
