@@ -29,6 +29,7 @@
         <activity android:name=".saltedge.SaltEdgeCredentialsPaymentActivity"/>
         <activity android:name=".saltedge.SaltEdgeDirectPayActivity"/>
         <activity android:name=".demo.signup.SignUpActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".demo.login.LoginActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".demo.signup.LegalTermsActivity" />
     </application>
 

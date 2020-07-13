@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.dinube.bonpreu.R
+import com.dinube.bonpreu.demo.login.LoginActivity
 import com.dinube.bonpreu.demo.signup.LegalTermsActivity
 import kotlinx.android.synthetic.main.demo_activity_onboarding.*
 
@@ -17,10 +18,16 @@ class OnBoardingActivity: AppCompatActivity() {
 
         initiateViewPager()
         setContinueButtonAction()
+        setLoginButtonAction()
+
+    }
+
+    private fun setLoginButtonAction() {
+        tv_already_signed_in.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
     }
 
     private fun setContinueButtonAction() {
-        btn_continue.setOnClickListener {
+        btn_login.setOnClickListener {
             if (vp_tutorial.currentItem == 2){
                 startActivity(Intent(this, LegalTermsActivity::class.java))
             }else{

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <androidx.appcompat.widget.Toolbar
         app:contentInsetLeft="0dp"
@@ -51,7 +46,7 @@
     <Button
         android:textColor="@android:color/white"
         android:background="@color/colorAccent"
-        android:text="Continuar"
+        android:text="Iniciar Sessió"
         android:paddingHorizontal="64dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,20 +54,36 @@
         android:layout_marginHorizontal="32dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/btn_login"
+        app:layout_constraintRight_toRightOf="@id/btn_login"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        android:layout_height="wrap_content">
+
     <TextView
-        app:layout_constraintRight_toRightOf="@id/edt_phone_number"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@id/edt_phone_number"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/edt_phone_number"
-        android:text="Enviarem un codi de verificació a aquest número de telèfon mòbil."
-        android:layout_width="0dp"
-        android:id="@+id/tv_help_text"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No tinc compte"
+        />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:textColor="#006400"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registra't"
+            />
+    </LinearLayout>
+
 
     <TextView
         app:layout_constraintRight_toRightOf="@id/edt_phone_number"
@@ -104,6 +115,3 @@
         android:layout_height="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <include layout="@layout/bottom_sheet_signup"/>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
