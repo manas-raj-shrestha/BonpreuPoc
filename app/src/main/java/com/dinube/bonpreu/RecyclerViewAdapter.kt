@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TransactionAdapter(private val transactionItems: ArrayList<TransactionItems>) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val tvDate: TextView = itemView.findViewById(R.id.tv_date)
+        val tvCode: TextView = itemView.findViewById(R.id.tv_code)
         val tvAmount: TextView = itemView.findViewById(R.id.tv_amount)
-        val tvDetail: TextView = itemView.findViewById(R.id.tv_detail)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,9 +22,10 @@ class TransactionAdapter(private val transactionItems: ArrayList<TransactionItem
      }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvAmount.text = transactionItems[position].amount
-        holder.tvDetail.text = transactionItems[position].detail
+        holder.tvAmount.text = transactionItems[position].amount.plus(" €")
+        holder.tvCode.text = transactionItems[position].code
+        holder.tvDate.text = transactionItems[position].date
     }
 
-    data class TransactionItems(val amount: String, val detail:String)
+    data class TransactionItems(val amount: String, val detail:String, val date: String, val code:String)
 }

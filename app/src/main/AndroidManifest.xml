@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DashboardActivity"/>
+<!--        <activity android:name=".DashboardActivity"/>-->
+        <activity android:name=".demo.dashboard.DashboardActivity"/>
         <activity android:name=".saltedge.SaltEdgeDashboardActivity"/>
 
 
