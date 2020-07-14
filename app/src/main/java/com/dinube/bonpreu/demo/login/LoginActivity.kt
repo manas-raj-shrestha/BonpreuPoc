@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.RPApiService
+import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.demo.signup.SignUpActivity
 import com.dinube.bonpreu.demo.signup.SignUpPresenter.Companion.BASE64_FLAG
 import com.google.android.gms.fido.Fido
@@ -196,7 +197,7 @@ class LoginActivity: AppCompatActivity() {
 
 
                             Toast.makeText(this@LoginActivity,"Authentication Successful", Toast.LENGTH_SHORT).show()
-//                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                            startActivity(Intent(this@LoginActivity,DashboardActivity::class.java))
 
 
                     } else {

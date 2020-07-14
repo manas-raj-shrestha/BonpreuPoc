@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.dinube.bonpreu.R
+import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.demo.signup.contracts.SignUpPresenterView
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -71,5 +72,9 @@ class SignUpActivity: AppCompatActivity(), SignUpPresenterView{
 
     override fun onSingularKeyError(error: String) {
         Log.e("here","here")
+    }
+
+    override fun onRegistrationSuccessful() {
+        startActivity(Intent(this, DashboardActivity::class.java))
     }
 }

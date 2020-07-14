@@ -226,7 +226,7 @@ class SignUpPresenter(context: Context): SignUpViewPresenter{
                         Log.e("response", response.message())
 
                         Toast.makeText(context,"Registration Successful", Toast.LENGTH_SHORT).show()
-
+                        signUpPresenterView.onRegistrationSuccessful()
 //                        startActivity(Intent(this@SignUpActivity,RegistrationActivity::class.java))
 
                     } else {
