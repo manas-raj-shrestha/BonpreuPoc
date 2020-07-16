@@ -28,6 +28,17 @@
         android:text="Get Started"
         android:textColor="#1D5532"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_get_started_afterbank"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="186dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="#FFBF13"
+        android:text="Get Started with Afterbank"
+        android:textColor="#1D5532"
+        />
 
     <Button
         android:id="@+id/btn_get_started_salt_edge"

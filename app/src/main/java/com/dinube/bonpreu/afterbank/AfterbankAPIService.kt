@@ -1,10 +1,7 @@
-package com.dinube.bonpreu.retroInterface
+package com.dinube.bonpreu.afterbank
 
-import com.dinube.bonpreu.RP_SERVER_URL
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.*
@@ -12,9 +9,19 @@ import java.net.CookieManager
 import java.net.CookiePolicy
 import java.util.concurrent.TimeUnit
 
+
 interface AfterBankApi {
-        @POST("/consent/get")
-        fun getConsent()
+
+    @GET("/consent/get")
+    fun getConsent(): Call<Consent>
+
+    @GET("/consent/response")
+    fun getConsentResponse(): Call<ConsentResponse>
+
+//    @FormUrlEncoded
+//    @Headers("Content-Type: application/json","servicekey: s2be1zyaihpmhgzy","service: sandbox","grantType: payment","validUntil: 10-09-2020")
+//    @POST("/consent/get")
+//    fun getConsent(@Field("yourConsentCallback") yourConsentCallback: String): Call<ConsentResponse?>?
 
 }
 
@@ -36,7 +43,7 @@ class AfterbankAPIService {
 
             val retrofit =
                 Retrofit.Builder().client(okHttpClient)
-                    .baseUrl("apipsd2.afterbanks.com/").build();
+                    .baseUrl("https://nodejs-afterbank.herokuapp.com/").build();
 
             return retrofit.create(AfterBankApi::class.java)
         }

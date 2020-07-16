@@ -11,6 +11,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.palette.graphics.Palette
+import com.dinube.bonpreu.afterbank.AfterbankDashboard
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_get_started.setOnClickListener { navigateToDashboard() }
         btn_get_started_salt_edge.setOnClickListener { navigateToSaltEdgeDashboard() }
+        btn_get_started_afterbank.setOnClickListener { navigateToAfterbankDashboard() }
 
         Handler().postDelayed({}, 2000)
 
@@ -108,6 +110,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToSaltEdgeDashboard() {
         startActivity(Intent(this, CustomerCreateActivity::class.java))
+    }
+    private fun navigateToAfterbankDashboard(){
+        startActivity(Intent(this, AfterbankDashboard::class.java))
     }
 
 
