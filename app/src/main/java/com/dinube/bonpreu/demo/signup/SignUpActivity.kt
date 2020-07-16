@@ -5,9 +5,11 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.dinube.bonpreu.BaseActivity
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.demo.signup.contracts.SignUpPresenterView
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_signup.*
 import kotlinx.android.synthetic.main.legal_terms_activity.toolbar
 import kotlinx.android.synthetic.main.sign_up_activity.*
 
-class SignUpActivity: AppCompatActivity(), SignUpPresenterView{
+class SignUpActivity: BaseActivity(), SignUpPresenterView{
 
    lateinit var standardBottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
     var presenter: SignUpPresenter = SignUpPresenter(this)
@@ -36,7 +38,8 @@ class SignUpActivity: AppCompatActivity(), SignUpPresenterView{
 
         standardBottomSheetBehavior.state = STATE_HIDDEN
 
-        btn_auto_signup.setOnClickListener {presenter.fido2RegisterInitiate(edt_phone_number.text.toString()) }
+        btn_auto_signup.setOnClickListener {
+            presenter.fido2RegisterInitiate(edt_phone_number.text.toString()) }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -48,7 +51,9 @@ class SignUpActivity: AppCompatActivity(), SignUpPresenterView{
 
     private fun initializeClickListeners() {
         btn_login.setOnClickListener {
-            standardBottomSheetBehavior.state = STATE_EXPANDED
+            Handler().postDelayed({standardBottomSheetBehavior.state = STATE_EXPANDED},500)
+            hideKeyboard(this@SignUpActivity)
+
         }
     }
 

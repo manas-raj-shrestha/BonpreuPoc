@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demo.onboarding.OnBoardingActivity">
+        <activity android:name=".demo.payment.PaymentUskActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +19,8 @@
             </intent-filter>
         </activity>
 
-<!--        <activity android:name=".DashboardActivity"/>-->
         <activity android:name=".demo.dashboard.DashboardActivity"/>
         <activity android:name=".saltedge.SaltEdgeDashboardActivity"/>
-
 
         <activity android:name=".CustomerCreateActivity"/>
         <activity android:name=".SelectionActivity"/>

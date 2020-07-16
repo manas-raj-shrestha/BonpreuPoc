@@ -8,6 +8,7 @@ import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dinube.bonpreu.BaseActivity
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.RPApiService
 import com.dinube.bonpreu.demo.dashboard.DashboardActivity
@@ -30,7 +31,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity: BaseActivity() {
 
     companion object {
         private const val LOG_TAG = "SingularKeyFido2Demo"
@@ -47,7 +48,10 @@ class LoginActivity: AppCompatActivity() {
         setRegisterAction()
         initializeImageViews()
 
-        btn_login.setOnClickListener {fido2AuthInitiate() }
+        btn_login.setOnClickListener {
+            hideKeyboard(this@LoginActivity)
+            fido2AuthInitiate()
+        }
     }
 
     private fun fido2AndroidAuth(
