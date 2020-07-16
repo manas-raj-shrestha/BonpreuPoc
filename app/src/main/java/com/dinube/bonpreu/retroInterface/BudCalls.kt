@@ -3,6 +3,9 @@ package com.dinube.bonpreu.retroInterface
 import com.dinube.bonpreu.data.Authentication
 import com.dinube.bonpreu.data.ConnectBankResponse
 import com.dinube.bonpreu.data.accounts.AccountsResponse
+import com.dinube.bonpreu.data.afterbanks.Consent
+import com.dinube.bonpreu.data.afterbanks.ConsentResponse
+import com.dinube.bonpreu.data.afterbanks.Provider
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlRequest
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlResponse
 import com.dinube.bonpreu.data.saltedgedata.connection.FetchConnectionsResponse
@@ -90,5 +93,14 @@ interface BudCalls {
     @Headers("Content-Type: application/json","Accept: application/json", "App-id: v0X_ICZORL49VcKKeRFBM9Gr-_t5iILZCs8-R-qaOy8","Secret: FNBLNKlEBKy0C5cNRR6oM1c4CUrwPKEHt0f-ItgTlQI" )
     @POST
     fun payWithConnect(@Url url:String, @Body payWithCredsRequest: ConnectPayRequest): Call<ConnectPayResponse>
+
+    @GET
+    fun fetchAfterbankProviders(@Url url:String, @Query("countryCode") countryCode: String): Call<ArrayList<Provider>>
+
+    @GET
+    fun getConsent(@Url url:String): Call<Consent>
+
+    @GET
+    fun getConsentResponse(@Url url:String): Call<ConsentResponse>
 
 }

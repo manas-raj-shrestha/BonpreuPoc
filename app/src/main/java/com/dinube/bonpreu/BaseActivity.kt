@@ -3,6 +3,7 @@ package com.dinube.bonpreu
 import android.app.Activity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -17,5 +18,9 @@ open class BaseActivity: AppCompatActivity() {
             view = View(activity)
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun makeToast(text: String){
+        Toast.makeText(this@BaseActivity, text, Toast.LENGTH_SHORT ).show()
     }
 }
