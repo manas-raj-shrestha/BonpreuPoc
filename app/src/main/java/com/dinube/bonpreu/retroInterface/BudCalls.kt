@@ -3,9 +3,7 @@ package com.dinube.bonpreu.retroInterface
 import com.dinube.bonpreu.data.Authentication
 import com.dinube.bonpreu.data.ConnectBankResponse
 import com.dinube.bonpreu.data.accounts.AccountsResponse
-import com.dinube.bonpreu.data.afterbanks.Consent
-import com.dinube.bonpreu.data.afterbanks.ConsentResponse
-import com.dinube.bonpreu.data.afterbanks.Provider
+import com.dinube.bonpreu.data.afterbanks.*
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlRequest
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlResponse
 import com.dinube.bonpreu.data.saltedgedata.connection.FetchConnectionsResponse
@@ -102,5 +100,23 @@ interface BudCalls {
 
     @GET
     fun getConsentResponse(@Url url:String): Call<ConsentResponse>
+
+    @FormUrlEncoded
+    @POST
+    fun getPayment(@Url url:String,
+                   @Field("servicekey") servicekey: String,
+                   @Field("paymentType") paymentType: String,
+                   @Field("currency") currency: String,
+                   @Field("destinationCreditorName") destinationCreditorName: String,
+                   @Field("paymentDescription") paymentDescription: String,
+                   @Field("yourPaymentCallback") yourPaymentCallback: String,
+                   @Field("sourceIBAN") iban1: String,
+                   @Field("destinationIBAN") iban2: String,
+                   @Field("token") token: String,
+                   @Field("amount") amount: Double): Call<PaymentInitiateResponse>
+
+    @FormUrlEncoded
+    @POST
+    fun getPaymentStatus(@Url url: String,@Field("paymentId") paymentId: String,@Field("servicekey") servicekey: String ): Call<PaymentStatusResponse>
 
 }

@@ -17,8 +17,8 @@ data class ConsentData(
 
 data class ConsentResponseData(
     var token: String,
-    var consentId: String,
-    var globalPosition: List<Users>
+    var consentId: String
+//    var globalPosition: List<Users>
 )
 
 data class Users(
@@ -28,4 +28,13 @@ data class Users(
     @SerializedName("iban") val iban : String,
     @SerializedName("balance") val balance : Int,
     @SerializedName("currency") val currency : String
+)
+
+data class PaymentInitiateResponse(
+    var follow: String,
+    var paymentId: String
+)
+
+data class PaymentStatusResponse(
+    var status: String
 )

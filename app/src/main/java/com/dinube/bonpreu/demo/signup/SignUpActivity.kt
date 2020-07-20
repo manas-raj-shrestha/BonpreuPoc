@@ -1,5 +1,7 @@
 package com.dinube.bonpreu.demo.signup
 
+import android.content.Context
+import android.content.Context.*
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.dinube.bonpreu.BaseActivity
 import com.dinube.bonpreu.R
+import com.dinube.bonpreu.demo.bankconnection.providers.ProviderSelectionActivity
 import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.demo.signup.contracts.SignUpPresenterView
 
@@ -80,6 +83,14 @@ class SignUpActivity: BaseActivity(), SignUpPresenterView{
     }
 
     override fun onRegistrationSuccessful() {
-        startActivity(Intent(this, DashboardActivity::class.java))
+        val sharedPref = getSharedPreferences(
+            "dinube_pref", Context.MODE_PRIVATE)
+
+        with (sharedPref.edit()) {
+            putString("username", edt_phone_number.text.toString())
+            commit()
+        }
+
+        startActivity(Intent(this, ProviderSelectionActivity::class.java))
     }
 }

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demo.bankconnection.consent.BankConsentActivity">
+        <activity android:name=".demo.onboarding.OnBoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".demo.payment.PaymentSuccessActivity"/>
+
         <activity android:name=".demo.bankconnection.providers.ProviderSelectionActivity"/>
+        <activity android:name=".demo.payment.PaymentUskActivity"/>
+        <activity android:name=".demo.bankconnection.consent.BankConsentActivity"/>
+
+        <activity android:name=".demo.payment.PaymentInitiateActivity"/>
 
         <activity android:name=".demo.dashboard.DashboardActivity"/>
         <activity android:name=".saltedge.SaltEdgeDashboardActivity"/>

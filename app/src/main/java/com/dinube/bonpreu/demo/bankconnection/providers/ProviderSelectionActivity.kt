@@ -1,5 +1,6 @@
 package com.dinube.bonpreu.demo.bankconnection.providers
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +9,7 @@ import com.dinube.bonpreu.BaseActivity
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.ServiceBuilder
 import com.dinube.bonpreu.data.afterbanks.Provider
+import com.dinube.bonpreu.demo.bankconnection.consent.BankConsentActivity
 import com.dinube.bonpreu.retroInterface.BudCalls
 import kotlinx.android.synthetic.main.legal_terms_activity.toolbar
 import kotlinx.android.synthetic.main.provider_selection_activity.*
@@ -18,7 +20,7 @@ import retrofit2.Response
 /**
  * Fetches all available bank or providers and lists them for user selection
  */
-class ProviderSelectionActivity : BaseActivity() {
+class ProviderSelectionActivity : BaseActivity(), ProviderSelectionListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,5 +66,10 @@ class ProviderSelectionActivity : BaseActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
+
+    override fun onProviderSelected(position: Int) {
+        startActivity(Intent(this@ProviderSelectionActivity, BankConsentActivity::class.java))
+    }
+
 
 }

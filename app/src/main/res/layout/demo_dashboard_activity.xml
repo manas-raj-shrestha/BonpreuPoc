@@ -111,6 +111,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="56dp"
+        android:id="@+id/fab"
         android:layout_height="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_submit"

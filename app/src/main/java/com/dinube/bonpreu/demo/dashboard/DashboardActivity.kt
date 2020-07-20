@@ -1,5 +1,6 @@
 package com.dinube.bonpreu.demo.dashboard
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.TransactionAdapter
+import com.dinube.bonpreu.demo.payment.PaymentUskActivity
 import kotlinx.android.synthetic.main.demo_dashboard_activity.*
 import kotlinx.android.synthetic.main.demo_dashboard_activity.rv_transactions
 import kotlinx.android.synthetic.main.layout_dashboard_grid_options.*
@@ -24,6 +26,8 @@ class DashboardActivity: AppCompatActivity() {
         initializeToolbar()
         initializeImageViews()
         setUpRecyclerView()
+
+        fab.setOnClickListener{startActivity(Intent(this@DashboardActivity, PaymentUskActivity::class.java))}
     }
 
     private fun setUpRecyclerView() {

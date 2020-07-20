@@ -1,6 +1,8 @@
 package com.dinube.bonpreu.demo.bankconnection.consent
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -69,7 +71,7 @@ class BankConsentActivity: BaseActivity(){
 
             if(url.contentEquals("https://nodejs-afterbank.herokuapp.com/consent/response")){
                 view.stopLoading()
-                makeToast("Payment Successfully Initiated!!")
+                makeToast("Bank successfully added!!")
                 view.visibility = View.GONE
                 progress_bar.visibility = View.VISIBLE
                 getLastConsentToken()
@@ -91,12 +93,23 @@ class BankConsentActivity: BaseActivity(){
             override fun onResponse(call: Call<ConsentResponse>, response: Response<ConsentResponse>) {
 
                 if (response.isSuccessful){
+                    val sharedPref = getSharedPreferences(
+                        "dinube_pref", Context.MODE_PRIVATE)
+
+                    with (sharedPref.edit()) {
+                        putString("user_trusted_beneficiary_token", response.body()!!.data.token)
+                        commit()
+                    }
+
+                    Log.e("token saved", sharedPref.getString("user_trusted_beneficiary_token", "NA"))
+
                     startActivity(Intent(this@BankConsentActivity, DashboardActivity::class.java))
                 }else{
                     Toast.makeText(this@BankConsentActivity, "Error Connecting Application", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<ConsentResponse>, t: Throwable) {
+                Log.e("error", t.message)
                 Toast.makeText(this@BankConsentActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })

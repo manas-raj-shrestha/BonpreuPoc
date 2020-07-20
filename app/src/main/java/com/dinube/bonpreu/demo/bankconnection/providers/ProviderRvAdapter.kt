@@ -30,7 +30,14 @@ class ProviderRvAdapter(val body: ArrayList<Provider>?) : RecyclerView.Adapter<R
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolder).tvBankName.text = body?.get(position)?.fullname
-        Glide.with(holder.itemView.context).load(body?.get(position)?.image).circleCrop().into((holder as ViewHolder).ivBankLogo)
+        val itemHolder = holder as ViewHolder
+        itemHolder.tvBankName.text = body?.get(position)?.fullname
+        Glide.with(holder.itemView.context).load(body?.get(position)?.image).circleCrop().into(itemHolder.ivBankLogo)
+        itemHolder.itemView.setOnClickListener {
+            if (itemHolder.itemView.context is ProviderSelectionListener){
+                (itemHolder.itemView.context as ProviderSelectionListener).onProviderSelected(position)
+            }
+        }
+
     }
 }
