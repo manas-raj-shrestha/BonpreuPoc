@@ -117,6 +117,14 @@ interface BudCalls {
 
     @FormUrlEncoded
     @POST
+    fun getTransactions(@Url url:String,
+                   @Field("servicekey") servicekey: String,
+                   @Field("startDate") startDate: String,
+                   @Field("token") token: String,
+                   @Field("products") products: String): Call<List<TransactionsResponse>>
+
+    @FormUrlEncoded
+    @POST
     fun getPaymentStatus(@Url url: String,@Field("paymentId") paymentId: String,@Field("servicekey") servicekey: String ): Call<PaymentStatusResponse>
 
 }

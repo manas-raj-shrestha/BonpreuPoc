@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dinube.bonpreu.data.afterbanks.Transactions
 
-class TransactionAdapter(private val transactionItems: ArrayList<TransactionItems>) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapterDemo    (private val transactionItems: List<Transactions>) : RecyclerView.Adapter<TransactionAdapterDemo.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvDate: TextView = itemView.findViewById(R.id.tv_date)
         val tvCode: TextView = itemView.findViewById(R.id.tv_code)
@@ -20,13 +20,13 @@ class TransactionAdapter(private val transactionItems: ArrayList<TransactionItem
 
     override fun getItemCount(): Int {
         return this.transactionItems.size
-     }
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvAmount.text = transactionItems[position].amount.toString().plus(" €")
-        holder.tvCode.text = transactionItems[position].code
+        holder.tvCode.text = transactionItems[position].description
         holder.tvDate.text = transactionItems[position].date
     }
 
-    data class TransactionItems(val amount: String, val detail:String, val date: String, val code:String)
+//    data class TransactionItems(val amount: String, val detail:String, val date: String, val code:String)
 }
