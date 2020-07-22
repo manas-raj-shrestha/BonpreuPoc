@@ -216,7 +216,7 @@ class DashboardActivity: AppCompatActivity(){
 
 
                         transactions.add(TransactionAdapter.TransactionItems("Amount: " + item.rawTransaction.balance.amount.amount,
-                               "Detail: " + item.rawTransaction.transactionInformation))
+                               "Detail: " + item.rawTransaction.transactionInformation,"",""))
 
                         initializeRv(transactions)
                     }
@@ -244,9 +244,9 @@ class DashboardActivity: AppCompatActivity(){
                     var transactions = ArrayList<TransactionAdapter.TransactionItems>()
                     for(item in response.body()?.data!!){
 
-
-                        transactions.add(TransactionAdapter.TransactionItems("Provider: "+ item.provider,
-                            "Balance: "+ item.balances?.get(0)?.amount!!.amount))
+//
+//                        transactions.add(TransactionAdapter.TransactionItems("Provider: "+ item.provider,
+//                            "Balance: "+ item.balances?.get(0)?.amount!!.amount))
 
                         initializeAccountRv(transactions)
                     }

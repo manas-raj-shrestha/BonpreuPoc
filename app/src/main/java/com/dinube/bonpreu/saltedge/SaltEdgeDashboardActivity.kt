@@ -192,12 +192,12 @@ class SaltEdgeDashboardActivity: AppCompatActivity(){
                     for(item in response.body()?.data!!){
 
 
-                        transactions.add(
-                            TransactionAdapter.TransactionItems(
-                                "Amount: " + item.amount,
-                                "Detail: " + item.description
-                            )
-                        )
+//                        transactions.add(
+//                            TransactionAdapter.TransactionItems(
+//                                "Amount: " + item.amount,
+//                                "Detail: " + item.description
+//                            )
+//                        )
 
 
                     }
@@ -230,12 +230,12 @@ class SaltEdgeDashboardActivity: AppCompatActivity(){
                     var accounts = ArrayList<TransactionAdapter.TransactionItems>()
                     for(item in response.body()?.data!!){
 
-                        accounts.add(
-                            TransactionAdapter.TransactionItems(
-                                "Provider: " + item.name,
-                                "Balance: " + item.balance
-                            )
-                        )
+//                        accounts.add(
+//                            TransactionAdapter.TransactionItems(
+//                                "Provider: " + item.name,
+//                                "Balance: " + item.balance
+//                            )
+//                        )
 
                     }
 

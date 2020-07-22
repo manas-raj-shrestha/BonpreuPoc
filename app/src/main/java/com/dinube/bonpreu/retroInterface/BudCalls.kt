@@ -3,6 +3,7 @@ package com.dinube.bonpreu.retroInterface
 import com.dinube.bonpreu.data.Authentication
 import com.dinube.bonpreu.data.ConnectBankResponse
 import com.dinube.bonpreu.data.accounts.AccountsResponse
+import com.dinube.bonpreu.data.afterbanks.*
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlRequest
 import com.dinube.bonpreu.data.saltedgedata.connection.ConnectionUrlResponse
 import com.dinube.bonpreu.data.saltedgedata.connection.FetchConnectionsResponse
@@ -90,5 +91,40 @@ interface BudCalls {
     @Headers("Content-Type: application/json","Accept: application/json", "App-id: v0X_ICZORL49VcKKeRFBM9Gr-_t5iILZCs8-R-qaOy8","Secret: FNBLNKlEBKy0C5cNRR6oM1c4CUrwPKEHt0f-ItgTlQI" )
     @POST
     fun payWithConnect(@Url url:String, @Body payWithCredsRequest: ConnectPayRequest): Call<ConnectPayResponse>
+
+    @GET
+    fun fetchAfterbankProviders(@Url url:String, @Query("countryCode") countryCode: String): Call<ArrayList<Provider>>
+
+    @GET
+    fun getConsent(@Url url:String): Call<Consent>
+
+    @GET
+    fun getConsentResponse(@Url url:String): Call<ConsentResponse>
+
+    @FormUrlEncoded
+    @POST
+    fun getPayment(@Url url:String,
+                   @Field("servicekey") servicekey: String,
+                   @Field("paymentType") paymentType: String,
+                   @Field("currency") currency: String,
+                   @Field("destinationCreditorName") destinationCreditorName: String,
+                   @Field("paymentDescription") paymentDescription: String,
+                   @Field("yourPaymentCallback") yourPaymentCallback: String,
+                   @Field("sourceIBAN") iban1: String,
+                   @Field("destinationIBAN") iban2: String,
+                   @Field("token") token: String,
+                   @Field("amount") amount: Double): Call<PaymentInitiateResponse>
+
+    @FormUrlEncoded
+    @POST
+    fun getTransactions(@Url url:String,
+                   @Field("servicekey") servicekey: String,
+                   @Field("startDate") startDate: String,
+                   @Field("token") token: String,
+                   @Field("products") products: String): Call<List<TransactionsResponse>>
+
+    @FormUrlEncoded
+    @POST
+    fun getPaymentStatus(@Url url: String,@Field("paymentId") paymentId: String,@Field("servicekey") servicekey: String ): Call<PaymentStatusResponse>
 
 }

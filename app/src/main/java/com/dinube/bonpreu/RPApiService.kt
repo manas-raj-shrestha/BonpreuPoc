@@ -51,7 +51,11 @@ class RPApiService {
 
             val retrofit =
                 Retrofit.Builder().client(okHttpClient)
+//<<<<<<< HEAD
                     .baseUrl(RP_SERVER_URL).build();
+//=======
+//                    .baseUrl("https://singularkey-webauthn.herokuapp.com/").build();
+//>>>>>>> bf0f2456cf2c97acd74699bdaecbda5e5a8876fd
 
             return retrofit.create(RPApi::class.java)
         }

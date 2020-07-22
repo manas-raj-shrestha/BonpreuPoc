@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/ll_savings"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+        android:layout_width="0dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/ll_menu"
+        android:paddingVertical="16dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/iv_piggy_bank"
+            android:background="@drawable/circular_background"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_money"
+            android:layout_marginRight="16dp"
+            android:layout_height="32dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardiola"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_menu"
+        app:layout_constraintLeft_toLeftOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+        android:layout_width="0dp"
+        android:paddingVertical="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_menu"
+            android:padding="10dp"
+            android:src="@drawable/ic_menu_white"
+            android:background="@drawable/circular_background"
+            android:layout_width="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Llista de\nla compra"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_transaction"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/ll_savings"
+        android:layout_width="0dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/ll_banks"
+        android:paddingVertical="16dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/iv_transaction"
+            android:background="@drawable/circular_background"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_receipt_white"
+            android:layout_marginRight="16dp"
+            android:layout_height="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiquets de\ncompra"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_banks"
+        app:layout_constraintLeft_toLeftOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/ll_menu"
+        android:layout_width="0dp"
+        android:paddingVertical="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_bank"
+            android:padding="10dp"
+            android:src="@drawable/ic_bank_white"
+            android:background="@drawable/circular_background"
+            android:layout_width="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bancs \nvinculats"
+            />
+
+    </LinearLayout>
+</merge>
