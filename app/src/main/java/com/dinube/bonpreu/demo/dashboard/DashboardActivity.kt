@@ -11,10 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dinube.bonpreu.R
-import com.dinube.bonpreu.ServiceBuilder
-import com.dinube.bonpreu.TransactionAdapter
-import com.dinube.bonpreu.TransactionAdapterDemo
+import com.dinube.bonpreu.*
 import com.dinube.bonpreu.data.afterbanks.PaymentInitiateResponse
 import com.dinube.bonpreu.data.afterbanks.Transactions
 import com.dinube.bonpreu.data.afterbanks.TransactionsResponse
@@ -33,18 +30,18 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlin.random.Random
 
-class DashboardActivity: AppCompatActivity() {
+class DashboardActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.demo_dashboard_activity)
         initializeToolbar()
         initializeImageViews()
-        setUpRecyclerView()
+        getTransactionList()
 
         fab.setOnClickListener{startActivity(Intent(this@DashboardActivity, PaymentUskActivity::class.java))}
     }
 
-    private fun setUpRecyclerView() {
+    private fun getTransactionList() {
         val request = ServiceBuilder.buildService(BudCalls::class.java)
 
         var transactions: List<Transactions>?
@@ -53,29 +50,28 @@ class DashboardActivity: AppCompatActivity() {
             "dinube_pref", Context.MODE_PRIVATE)
         val token =
             sharedPref.getString("user_trusted_beneficiary_token", "NA")
-        Log.e("Payment ini", token)
         val call = request.getTransactions("https://apipsd2.afterbanks.com/transactions/", "s2be1zyaihpmhgzy","07-01-2020",token!!,"A9DA3E6B009A588F5690A71AC18AA739EE5CB07E34D6012835E4B0D936850C21")
 
         call.enqueue(object : Callback<List<TransactionsResponse>> {
             override fun onResponse(call: Call<List<TransactionsResponse>>, response: Response<List<TransactionsResponse>>) =
                 if (response.isSuccessful){
-                    progress_bar1.visibility = View.GONE
                    transactions = response.body()?.get(0)?.transactions
-
-                    rv_transactions.layoutManager = LinearLayoutManager(this@DashboardActivity)
-                    rv_transactions.adapter = transactions?.let { TransactionAdapterDemo(it) }
-                    rv_transactions.adapter!!.notifyDataSetChanged()
+                    setupRecyclerView(transactions)
 
                 }else{
-                    Log.e("error", response.errorBody().toString())
-                    Toast.makeText(this@DashboardActivity, "Error Connecting Application", Toast.LENGTH_SHORT).show()
+                    makeToast("Error Connecting Application")
                 }
             override fun onFailure(call: Call<List<TransactionsResponse>>, t: Throwable) {
-                Log.e("error", t.message)
-                Toast.makeText(this@DashboardActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+                makeToast("${t.message}")
             }
         })
 
+    }
+
+    fun setupRecyclerView(transactions: List<Transactions>?){
+        rv_transactions.layoutManager = LinearLayoutManager(this@DashboardActivity)
+        rv_transactions.adapter = transactions?.let { TransactionAdapterDemo(it) }
+        rv_transactions.adapter!!.notifyDataSetChanged()
     }
 
 //    private fun getDemoData(): ArrayList<TransactionAdapter.TransactionItems> {

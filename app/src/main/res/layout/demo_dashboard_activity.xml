@@ -108,16 +108,6 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle_transactions"
         android:layout_height="0dp"/>
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/rv_transactions"
-        app:layout_constraintLeft_toLeftOf="@+id/rv_transactions"
-        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
-        android:id="@+id/progress_bar1"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_transactions"
-        app:layout_constraintRight_toRightOf="@+id/rv_transactions"
-        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="56dp"
