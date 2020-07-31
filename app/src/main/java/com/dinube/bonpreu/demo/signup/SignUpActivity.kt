@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.sign_up_activity.*
 
 class SignUpActivity: BaseActivity(), SignUpPresenterView{
 
-   lateinit var standardBottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
+    lateinit var standardBottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
     var presenter: SignUpPresenter = SignUpPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +61,7 @@ class SignUpActivity: BaseActivity(), SignUpPresenterView{
     }
 
     private fun initializeImageViews() {
-        var stream = assets?.open("fido_icon.png");
+        var stream = assets?.open("fido_logo.png");
         iv_fido_icon.setImageBitmap(BitmapFactory.decodeStream(stream))
         stream?.close()
 

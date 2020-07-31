@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.saltedge.SaltEdgeCredentialsPaymentActivity
 import com.dinube.bonpreu.saltedge.SaltEdgeDirectPayActivity
 import com.google.android.gms.fido.Fido
@@ -49,6 +50,13 @@ class LoginActivity: AppCompatActivity() {
         for_payment=intent.getBooleanExtra("for_payment",false)
         for_payment_creds=intent.getBooleanExtra("for_payment_creds",false)
         for_payment_direct=intent.getBooleanExtra("for_payment_direct",false)
+        val sharedPref = getSharedPreferences(
+            "dinube_pref", Context.MODE_PRIVATE)
+        usernameButton.setText(sharedPref.getString("username",""))
+        usernameButton.visibility = View.GONE
+        signupFido2Button.visibility = View.GONE
+        resultText.text = "Please Wait"
+        fido2AuthInitiate()
 
         if (for_payment){
             val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
@@ -253,16 +261,16 @@ class LoginActivity: AppCompatActivity() {
                             Toast.makeText(this@LoginActivity,"Authentication Successful", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@LoginActivity,
                                 SaltEdgeDirectPayActivity::class.java))
-                        }else{
-                            val sharedPref = this@LoginActivity.getPreferences(Context.MODE_PRIVATE)
-                                ?: return
-                            with (sharedPref.edit()) {
-                                putString(("user_name"), usernameButton.text.toString())
-                                commit()
-                            }
+                        }else {
+//                            val sharedPref = this@LoginActivity.getPreferences(Context.MODE_PRIVATE)
+//                                ?: return
+//                            with (sharedPref.edit()) {
+//                                putString(("user_name"), usernameButton.text.toString())
+//                                commit()
+//                            }
 
                             Toast.makeText(this@LoginActivity,"Authentication Successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                            startActivity(Intent(this@LoginActivity,DashboardActivity::class.java))
                         }
 
                     } else {

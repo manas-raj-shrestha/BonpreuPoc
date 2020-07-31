@@ -39,7 +39,7 @@ class PaymentInitiateActivity: BaseActivity() {
         val token =
             sharedPref.getString("user_trusted_beneficiary_token", "NA")
         Log.e("Payment ini", token)
-        val call = request.getPayment("https://apipsd2.afterbanks.com/payment/initiate/", "s2be1zyaihpmhgzy","normal","EUR","ABC","payment","https://nodejs-afterbank.herokuapp.com/payment/initiate/callback","ES5530350004900041034161","ES8330350001580011000101",token!!, 10.0)
+        val call = request.getPayment("https://apipsd2.afterbanks.com/payment/initiate/", "s2be1zyaihpmhgzy","normal","EUR","ABC","payment","https://nodejs-afterbank.herokuapp.com/payment/initiate/callback","ES8401826450000201500191","ES1801822200120201933578",token!!, 10.0)
 
         call.enqueue(object : Callback<PaymentInitiateResponse> {
             override fun onResponse(call: Call<PaymentInitiateResponse>, response: Response<PaymentInitiateResponse>) {

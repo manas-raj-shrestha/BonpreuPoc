@@ -50,14 +50,17 @@ class DashboardActivity: BaseActivity() {
             "dinube_pref", Context.MODE_PRIVATE)
         val token =
             sharedPref.getString("user_trusted_beneficiary_token", "NA")
-        val call = request.getTransactions("https://apipsd2.afterbanks.com/transactions/", "s2be1zyaihpmhgzy","07-01-2020",token!!,"A9DA3E6B009A588F5690A71AC18AA739EE5CB07E34D6012835E4B0D936850C21")
+        val call = request.getTransactions("https://apipsd2.afterbanks.com/transactions/", "s2be1zyaihpmhgzy","07-01-2020",token!!,"ES018202000000000000000000040780458")
 
         call.enqueue(object : Callback<List<TransactionsResponse>> {
             override fun onResponse(call: Call<List<TransactionsResponse>>, response: Response<List<TransactionsResponse>>) =
                 if (response.isSuccessful){
                    transactions = response.body()?.get(0)?.transactions
-                    setupRecyclerView(transactions)
-
+                    if (transactions?.isNotEmpty()!!){
+                        setupRecyclerView(transactions)
+                    }else{
+                        makeToast("Error Connecting Application")
+                    }
                 }else{
                     makeToast("Error Connecting Application")
                 }
