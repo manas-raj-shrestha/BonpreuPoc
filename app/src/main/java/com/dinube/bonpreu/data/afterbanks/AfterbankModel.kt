@@ -62,3 +62,15 @@ data class Transactions(
     @SerializedName("categoryId") val categoryId : Int,
     @SerializedName("transactionId") val transactionId : String
 )
+
+data class ConsentInfo(
+    @SerializedName("grantType") val grantType : String,
+    @SerializedName("creationDate") val creationDate : String,
+    @SerializedName("validUntil") val validUntil : String
+)
+
+data class ConsentRenew(
+    @SerializedName("follow") val follow : String,
+    @SerializedName("consentId") val consentId : String
+
+)

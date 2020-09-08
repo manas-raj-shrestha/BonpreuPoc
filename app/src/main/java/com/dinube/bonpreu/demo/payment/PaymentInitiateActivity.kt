@@ -14,6 +14,7 @@ import com.dinube.bonpreu.R
 import com.dinube.bonpreu.ServiceBuilder
 import com.dinube.bonpreu.data.afterbanks.PaymentInitiateResponse
 import com.dinube.bonpreu.data.afterbanks.PaymentStatusResponse
+import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import com.dinube.bonpreu.retroInterface.BudCalls
 import kotlinx.android.synthetic.main.payment_initiate_activity.*
 import retrofit2.Call
@@ -83,7 +84,6 @@ class PaymentInitiateActivity: BaseActivity() {
 
             if(url.contentEquals("https://apipsd2.afterbanks.com/callback/?callbackType=pagoConfirmado")){
                 view.stopLoading()
-                makeToast("Payment Successfully Initiated!!")
                 view.visibility = View.GONE
                 progress_bar.visibility = View.VISIBLE
                 getPaymentStatus()
@@ -100,8 +100,16 @@ class PaymentInitiateActivity: BaseActivity() {
 
                 if (response.isSuccessful){
                     progress_bar.visibility = View.GONE
-                    Log.e("status", response.body()!!.status)
-                    startActivity(Intent(this@PaymentInitiateActivity, PaymentSuccessActivity::class.java))
+//                    Log.e("status", response.body()!!.status)
+                    if(response.body()?.status == "RCVD" || response.body()?.status == "ACSC" || response.body()?.status == "ACCC"){
+                        startActivity(Intent(this@PaymentInitiateActivity, PaymentSuccessActivity::class.java))
+                        makeToast("Payment Successfully Initiated!!")
+                    }
+                    else if(response.body()?.status == "RJCT" || response.body()?.status == "CANC"){
+                        startActivity(Intent(this@PaymentInitiateActivity, DashboardActivity::class.java))
+                        makeToast("Payment has been canceled")
+
+                    }
                 }else{
                     Log.e("error", response.errorBody().toString())
                     Toast.makeText(this@PaymentInitiateActivity, "Error Connecting Application", Toast.LENGTH_SHORT).show()

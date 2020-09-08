@@ -69,7 +69,7 @@ class BankConsentActivity: BaseActivity(){
             val baseUrl: String = formatterUrl.protocol.toString() + "://" + formatterUrl.host
             Log.e("Listener", "Start" + url)
 
-            if(url.contentEquals("https://nodejs-afterbank.herokuapp.com/consent/response")){
+            if(url.contentEquals("https://nodejs-afterbank.herokuapp.com/consent/response?statusAB=403")){
                 view.stopLoading()
                 makeToast("Bank successfully added!!")
                 view.visibility = View.GONE

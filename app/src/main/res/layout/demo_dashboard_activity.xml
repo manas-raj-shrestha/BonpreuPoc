@@ -5,6 +5,20 @@
     android:background="#F4F4F4"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/web_view_bank_consent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="gone"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cl_parent"
+        android:background="#F4F4F4">
         <androidx.appcompat.widget.Toolbar
             android:elevation="50dp"
             android:background="@android:color/white"
@@ -58,64 +72,67 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:adjustViewBounds="true"
-        android:layout_marginHorizontal="16dp"
-        android:scaleType="fitXY"
-        android:layout_marginTop="16dp"
-        android:id="@+id/iv_offer_banner"
-        android:layout_width="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:layout_height="wrap_content"/>
+        <ImageView
+            android:adjustViewBounds="true"
+            android:layout_marginHorizontal="16dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="16dp"
+            android:id="@+id/iv_offer_banner"
+            android:layout_width="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_subtitle"
-        android:text="Enllaç ràpid"
-        app:layout_constraintTop_toBottomOf="@id/iv_offer_banner"
-       app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_subtitle"
+            android:text="Enllaç ràpid"
+            app:layout_constraintTop_toBottomOf="@id/iv_offer_banner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        app:layout_constraintGuide_percent="0.5"
-        android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
 
-   <include android:id="@+id/grid_options" layout="@layout/layout_dashboard_grid_options"/>
+        <include android:id="@+id/grid_options" layout="@layout/layout_dashboard_grid_options"/>
 
-    <TextView
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_subtitle_transactions"
-        android:text="Les meves transaccions"
-        app:layout_constraintTop_toBottomOf="@+id/ll_transaction"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        />
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_subtitle_transactions"
+            android:text="Les meves transaccions"
+            app:layout_constraintTop_toBottomOf="@+id/ll_transaction"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_transactions"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_transactions"
-        android:layout_height="0dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_transactions"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle_transactions"
+            android:layout_height="0dp"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="56dp"
-        android:id="@+id/fab"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_submit"
-        android:layout_margin="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="56dp"
+            android:id="@+id/fab"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_submit"
+            android:layout_margin="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

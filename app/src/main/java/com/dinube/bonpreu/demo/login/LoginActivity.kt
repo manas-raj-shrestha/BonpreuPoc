@@ -1,5 +1,6 @@
 package com.dinube.bonpreu.demo.login
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.graphics.BitmapFactory
@@ -17,6 +18,7 @@ import com.dinube.bonpreu.demo.signup.SignUpPresenter.Companion.BASE64_FLAG
 import com.google.android.gms.fido.Fido
 import com.google.android.gms.fido.Fido.*
 import com.google.android.gms.fido.fido2.api.common.*
+import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.legal_terms_activity.toolbar
 import kotlinx.android.synthetic.main.login_activity.*
 import kotlinx.android.synthetic.main.login_activity.iv_fido_icon
@@ -48,8 +50,15 @@ class LoginActivity: BaseActivity() {
         setRegisterAction()
         initializeImageViews()
 
+        val sharedPref = getSharedPreferences(
+            "dinube_pref", Context.MODE_PRIVATE)
+        edt_phone_number.setText(sharedPref.getString("username",""))
+        
+
         btn_login.setOnClickListener {
             hideKeyboard(this@LoginActivity)
+
+//            startActivity(Intent(this,DashboardActivity::class.java))
             fido2AuthInitiate()
         }
     }
@@ -202,6 +211,7 @@ class LoginActivity: BaseActivity() {
 
                             Toast.makeText(this@LoginActivity,"Authentication Successful", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@LoginActivity,DashboardActivity::class.java))
+                            finish()
 
 
                     } else {
@@ -222,7 +232,7 @@ class LoginActivity: BaseActivity() {
     }
 
     private fun initializeImageViews() {
-        var stream = assets?.open("fido_icon.png");
+        var stream = assets?.open("fido_logo.png");
         iv_fido_icon.setImageBitmap(BitmapFactory.decodeStream(stream))
         stream?.close()
 

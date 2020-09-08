@@ -117,11 +117,23 @@ interface BudCalls {
 
     @FormUrlEncoded
     @POST
-    fun getTransactions(@Url url:String,
+    fun getConsentInfo(@Url url:String,
                    @Field("servicekey") servicekey: String,
-                   @Field("startDate") startDate: String,
-                   @Field("token") token: String,
-                   @Field("products") products: String): Call<List<TransactionsResponse>>
+                   @Field("token") token: String): Call<ConsentInfo>
+
+    @FormUrlEncoded
+    @POST
+    fun getConsentRenew(@Url url:String,
+                       @Field("servicekey") servicekey: String,
+                       @Field("token") token: String): Call<ConsentRenew>
+
+    @FormUrlEncoded
+    @POST
+    fun getTransactions(@Url url:String,
+                        @Field("servicekey") servicekey: String,
+                        @Field("startDate") startDate: String,
+                        @Field("token") token: String,
+                        @Field("products") products: String): Call<List<TransactionsResponse>>
 
     @FormUrlEncoded
     @POST

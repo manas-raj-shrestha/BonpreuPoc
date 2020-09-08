@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_onboarding_0"
+    android:background="#0A172D"
     tools:context=".demo.SplashActivity">
     <ImageView
         android:id="@+id/iv_logo"
@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/image_34"/>
+        android:src="@drawable/logo_sliding"/>
 
 </RelativeLayout>
