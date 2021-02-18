@@ -5,10 +5,12 @@ import android.content.Intent
 import android.content.IntentSender
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.dinube.bonpreu.BaseActivity
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.RPApiService
@@ -17,6 +19,9 @@ import com.dinube.bonpreu.demo.login.LoginActivity
 import com.dinube.bonpreu.demo.signup.SignUpPresenter
 import com.google.android.gms.fido.Fido
 import com.google.android.gms.fido.fido2.api.common.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.bottom_sheet_amount_pay.*
+import kotlinx.android.synthetic.main.bottom_sheet_signup.*
 import kotlinx.android.synthetic.main.legal_terms_activity.toolbar
 import kotlinx.android.synthetic.main.payment_initiation_activity.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -29,7 +34,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PaymentUskActivity: BaseActivity() {
-companion object{
+    lateinit var standardBottomSheetBehavior : BottomSheetBehavior<ConstraintLayout>
+
+    companion object{
     private const val REQUEST_CODE_SIGN = 2}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +45,24 @@ companion object{
         initializeToolbar()
         initializeImageViews()
 
-        cl_parent.setOnClickListener {
+        standardBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_amount_pay)
+
+        standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+        iv_authorize.setOnClickListener {
             fido2AuthInitiate()
+//            startActivity(Intent(this,PaymentInitiateActivity::class.java))
+        }
+        tv_auth.setOnClickListener {
+            fido2AuthInitiate()
+//            startActivity(Intent(this,PaymentInitiateActivity::class.java))
+        }
+
+        cl_parent.setOnClickListener {
+//            fido2AuthInitiate()
+            Handler().postDelayed({standardBottomSheetBehavior.state =
+                BottomSheetBehavior.STATE_EXPANDED
+            },500)
         }
     }
 

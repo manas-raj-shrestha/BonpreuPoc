@@ -1,7 +1,9 @@
 package com.dinube.bonpreu.demo.onboarding
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -9,7 +11,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.dinube.bonpreu.R
 import com.dinube.bonpreu.demo.login.LoginActivity
 import com.dinube.bonpreu.demo.signup.LegalTermsActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.demo_activity_onboarding.*
+import kotlinx.android.synthetic.main.demo_activity_onboarding.iv_logo as iv_logo1
 
 class OnBoardingActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

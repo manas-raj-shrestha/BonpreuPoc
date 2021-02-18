@@ -8,11 +8,10 @@ import com.dinube.bonpreu.R
 import com.dinube.bonpreu.demo.dashboard.DashboardActivity
 import kotlinx.android.synthetic.main.payment_success_activity.*
 
-class PaymentSuccessActivity: BaseActivity() {
-
+class ReceiptActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.payment_success_activity)
+        setContentView(R.layout.receipt_activity)
 
         initializeToolbar()
         initializeImageViews()
@@ -23,14 +22,11 @@ class PaymentSuccessActivity: BaseActivity() {
         iv_dinube_logo.setImageBitmap(BitmapFactory.decodeStream(stream))
         stream?.close()
 
-        stream = assets?.open("payment_success_graphics.png");
-        iv_payment_success_graphics.setImageBitmap(BitmapFactory.decodeStream(stream))
-        stream?.close()
     }
 
     private fun initializeToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Pagament efectuat correctament"
+        supportActionBar?.title = "Tiquet Digital"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar.setNavigationOnClickListener { onBackPressed() }
@@ -38,7 +34,6 @@ class PaymentSuccessActivity: BaseActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, ReceiptActivity::class.java))
+        startActivity(Intent(this, DashboardActivity::class.java))
     }
-
 }

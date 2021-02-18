@@ -38,3 +38,39 @@ data class PaymentInitiateResponse(
 data class PaymentStatusResponse(
     var status: String
 )
+
+data class TransactionsResponse(
+    @SerializedName("product") val product : String,
+    @SerializedName("type") val type : String,
+    @SerializedName("balance") val balance : Double,
+    @SerializedName("countable_balance") val countable_balance : Int,
+    @SerializedName("arranged_balance") val arranged_balance : Int,
+    @SerializedName("balance_credit_granted") val balance_credit_granted : Int,
+    @SerializedName("currency") val currency : String,
+    @SerializedName("description") val description : String,
+    @SerializedName("ownerName") val ownerName : String,
+    @SerializedName("iban") val iban : String,
+    @SerializedName("transactions") val transactions : List<Transactions>
+)
+
+data class Transactions(
+    @SerializedName("date") val date : String,
+    @SerializedName("date2") val date2 : String,
+    @SerializedName("amount") val amount : Double,
+    @SerializedName("balance") val balance : Double,
+    @SerializedName("description") val description : String,
+    @SerializedName("categoryId") val categoryId : Int,
+    @SerializedName("transactionId") val transactionId : String
+)
+
+data class ConsentInfo(
+    @SerializedName("grantType") val grantType : String,
+    @SerializedName("creationDate") val creationDate : String,
+    @SerializedName("validUntil") val validUntil : String
+)
+
+data class ConsentRenew(
+    @SerializedName("follow") val follow : String,
+    @SerializedName("consentId") val consentId : String
+
+)
